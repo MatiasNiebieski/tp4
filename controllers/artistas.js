@@ -52,13 +52,13 @@ const getArtista = async (req, res) => {
 };
 
 const createArtista = async (req, res) => {
-
+    const nombre = req.body.nombre;
     try {
         const [result] = await conn.query(
             `INSERT INTO artistas (nombre) VALUES (?)`,
-            [req.body.nombre]
+            [nombre]
         );
-        res.json({ id: result.insertId });
+        res.json(result);
     }
     catch (e) {
         res.status(500).json({ error: e.message });
@@ -124,7 +124,7 @@ const getAlbumesByArtista = async (req, res) => {
     catch (e) {
         res.status(500).json({ error: e.message });
     }
-    
+
     // Completar con la consulta que devuelve las canciones de un artista
     // Recordar que los parámetros de una consulta GET se encuentran en req.params
     // Deberían devolver los datos de la misma forma que getAlbumes
@@ -143,7 +143,7 @@ const getCancionesByArtista = async (req, res) => {
     catch (e) {
         res.status(500).json({ error: e.message });
     }
-    
+
     // Completar con la consulta que devuelve las canciones de un artista
     // (tener en cuenta que las canciones están asociadas a un álbum, y los álbumes a un artista)
     // Recordar que los parámetros de una consulta GET se encuentran en req.params

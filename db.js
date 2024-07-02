@@ -4,5 +4,5 @@ export const conn = await mysql.createConnection({
     host: "localhost",
     user: "root",
     password: "rootroot",
-    database: "tp 4"
+    database: "tp final base de datos"
 });

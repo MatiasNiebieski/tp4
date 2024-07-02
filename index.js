@@ -12,7 +12,9 @@ app.get("/", (_, res) => {
     res.send("SpoTICfy API working!");
 });
 
-app.get("/canciones", canciones.getCanciones);
+app.get("/canciones", (_,res) => {
+    canciones.getCanciones(_,res);
+});
 app.get("/canciones/:id", canciones.getCancion);
 app.post("/canciones", canciones.createCancion);
 app.put("/canciones/:id", canciones.updateCancion);
